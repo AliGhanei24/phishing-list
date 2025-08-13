@@ -1,8 +1,20 @@
-[
-  "TRYwbGCBw8qEFECEnwKH1ZtsQEpvg4SDev",
-  "TCPYrSScuHLLPrBAobcHM7X1QBFjLVt4Zz",
-  "TRTRW5Z2Q547bFSq4CUmVfSZbVxrumUJ4J",
+# phishing_checker.py
+
+# لیست آدرس‌های فیشینگ (blacklist نمونه)
+blacklist = [
+    "TRYwbGCBw8qEFECEnwKH1ZtsQEpvg4SDev",
+    "TCPYrSScuHLLPrBAobcHM7X1QBFjLVt4Zz",
+    "TRTRW5Z2Q547bFSq4CUmVfSZbVxrumUJ4J"
 ]
 
+# فایل آدرس‌ها که خودت ساختی
+filename = "phishing-addresses.txt"
 
-
+# باز کردن فایل و بررسی هر آدرس
+with open(filename, "r") as file:
+    for line in file:
+        address = line.strip()
+        if address in blacklist:
+            print(f"{address} => PHISHING ⚠️")
+        else:
+            print(f"{address} => SAFE ✅")

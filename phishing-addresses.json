@@ -1,4 +1,4 @@
-# phishing_checker.py
+import json
 
 # لیست آدرس‌های فیشینگ (blacklist نمونه)
 blacklist = [
@@ -7,14 +7,16 @@ blacklist = [
     "TRTRW5Z2Q547bFSq4CUmVfSZbVxrumUJ4J"
 ]
 
-# فایل آدرس‌ها که خودت ساختی
-filename = "phishing-addresses.txt"
+# فایل JSON تو
+filename = "phishing-addresses.json"
 
-# باز کردن فایل و بررسی هر آدرس
+# باز کردن فایل و بارگذاری JSON
 with open(filename, "r") as file:
-    for line in file:
-        address = line.strip()
-        if address in blacklist:
-            print(f"{address} => PHISHING ⚠️")
-        else:
-            print(f"{address} => SAFE ✅")
+    addresses = json.load(file)  # فرض بر این است که JSON یک لیست ساده از رشته‌هاست
+
+# بررسی هر آدرس
+for address in addresses:
+    if address in blacklist:
+        print(f"{address} => PHISHING ⚠️")
+    else:
+        print(f"{address} => SAFE ✅")

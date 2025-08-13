@@ -1,18 +1,19 @@
 import json
+import requests
 
-# لیست آدرس‌های فیشینگ (blacklist نمونه)
+# لیست آدرس‌های فیشینگ (نمونه)
 blacklist = [
     "TRYwbGCBw8qEFECEnwKH1ZtsQEpvg4SDev",
     "TCPYrSScuHLLPrBAobcHM7X1QBFjLVt4Zz",
     "TRTRW5Z2Q547bFSq4CUmVfSZbVxrumUJ4J"
 ]
 
-# فایل JSON تو
-filename = "phishing-addresses.json"
+# لینک مستقیم فایل JSON روی گیت‌هاب (raw)
+url = "https://raw.githubusercontent.com/AliGhanei24/phishing-list/main/phishing-addresses.json"
 
-# باز کردن فایل و بارگذاری JSON
-with open(filename, "r") as file:
-    addresses = json.load(file)  # فرض بر این است که JSON یک لیست ساده از رشته‌هاست
+# دانلود فایل JSON
+response = requests.get(url)
+addresses = response.json()  # فرض بر این است که JSON یک لیست ساده است
 
 # بررسی هر آدرس
 for address in addresses:

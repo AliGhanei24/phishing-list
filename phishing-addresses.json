@@ -1,23 +1,5 @@
-import json
-import requests
-
-# لیست آدرس‌های فیشینگ (نمونه)
-blacklist = [
-    "TRYwbGCBw8qEFECEnwKH1ZtsQEpvg4SDev",
-    "TCPYrSScuHLLPrBAobcHM7X1QBFjLVt4Zz",
-    "TRTRW5Z2Q547bFSq4CUmVfSZbVxrumUJ4J"
+[
+  "TRYwbGCBw8qEFECEnwKH1ZtsQEpvg4SDev",
+  "TCPYrSScuHLLPrBAobcHM7X1QBFjLVt4Zz",
+  "TRTRW5Z2Q547bFSq4CUmVfSZbVxrumUJ4J"
 ]
-
-# لینک مستقیم فایل JSON روی گیت‌هاب (raw)
-url = "https://raw.githubusercontent.com/AliGhanei24/phishing-list/main/phishing-addresses.json"
-
-# دانلود فایل JSON
-response = requests.get(url)
-addresses = response.json()  # فرض بر این است که JSON یک لیست ساده است
-
-# بررسی هر آدرس
-for address in addresses:
-    if address in blacklist:
-        print(f"{address} => PHISHING ⚠️")
-    else:
-        print(f"{address} => SAFE ✅")
